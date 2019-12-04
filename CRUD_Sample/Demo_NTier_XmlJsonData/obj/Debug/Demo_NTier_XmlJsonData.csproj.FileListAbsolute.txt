@@ -1,5 +1,4 @@
 E:\CIT 255 - OOP\Demo_NTier_XmlJsonData-master\Demo_NTier_XmlJsonData\obj\Debug\Demo_NTier_XmlJsonData.csprojAssemblyReference.cache
-E:\CIT 255 - OOP\Demo_NTier_XmlJsonData-master\Demo_NTier_XmlJsonData\obj\Debug\Demo_NTier_XmlJsonData.csproj.CoreCompileInputs.cache
 E:\CIT 255 - OOP\Demo_NTier_XmlJsonData-master\Demo_NTier_XmlJsonData\bin\Debug\DataAccessLayer\DataXml\FlintstoneCharacters.xml
 E:\CIT 255 - OOP\Demo_NTier_XmlJsonData-master\Demo_NTier_XmlJsonData\bin\Debug\DataAccessLayer\DataJson\FlintstoneCharacters.json
 E:\CIT 255 - OOP\Demo_NTier_XmlJsonData-master\Demo_NTier_XmlJsonData\bin\Debug\Demo_NTier_XmlJsonData.exe.config
@@ -10,3 +9,15 @@ E:\CIT 255 - OOP\Demo_NTier_XmlJsonData-master\Demo_NTier_XmlJsonData\bin\Debug\
 E:\CIT 255 - OOP\Demo_NTier_XmlJsonData-master\Demo_NTier_XmlJsonData\obj\Debug\Demo_NTier_XmlJsonData.csproj.CopyComplete
 E:\CIT 255 - OOP\Demo_NTier_XmlJsonData-master\Demo_NTier_XmlJsonData\obj\Debug\Demo_NTier_XmlJsonData.exe
 E:\CIT 255 - OOP\Demo_NTier_XmlJsonData-master\Demo_NTier_XmlJsonData\obj\Debug\Demo_NTier_XmlJsonData.pdb
+E:\CIT 255 - OOP\Demo_NTier_XmlJsonData-master\Demo_NTier_XmlJsonData\obj\Debug\Demo_NTier_XmlJsonData.csproj.CoreCompileInputs.cache
+H:\Demo_NTier_XmlJsonData-master\Demo_NTier_XmlJsonData\bin\Debug\DataAccessLayer\DataXml\FlintstoneCharacters.xml
+H:\Demo_NTier_XmlJsonData-master\Demo_NTier_XmlJsonData\bin\Debug\DataAccessLayer\DataJson\FlintstoneCharacters.json
+H:\Demo_NTier_XmlJsonData-master\Demo_NTier_XmlJsonData\bin\Debug\Demo_NTier_XmlJsonData.exe.config
+H:\Demo_NTier_XmlJsonData-master\Demo_NTier_XmlJsonData\bin\Debug\Demo_NTier_XmlJsonData.exe
+H:\Demo_NTier_XmlJsonData-master\Demo_NTier_XmlJsonData\bin\Debug\Demo_NTier_XmlJsonData.pdb
+H:\Demo_NTier_XmlJsonData-master\Demo_NTier_XmlJsonData\bin\Debug\Newtonsoft.Json.dll
+H:\Demo_NTier_XmlJsonData-master\Demo_NTier_XmlJsonData\bin\Debug\Newtonsoft.Json.xml
+H:\Demo_NTier_XmlJsonData-master\Demo_NTier_XmlJsonData\obj\Debug\Demo_NTier_XmlJsonData.csprojAssemblyReference.cache
+H:\Demo_NTier_XmlJsonData-master\Demo_NTier_XmlJsonData\obj\Debug\Demo_NTier_XmlJsonData.csproj.CopyComplete
+H:\Demo_NTier_XmlJsonData-master\Demo_NTier_XmlJsonData\obj\Debug\Demo_NTier_XmlJsonData.exe
+H:\Demo_NTier_XmlJsonData-master\Demo_NTier_XmlJsonData\obj\Debug\Demo_NTier_XmlJsonData.pdb

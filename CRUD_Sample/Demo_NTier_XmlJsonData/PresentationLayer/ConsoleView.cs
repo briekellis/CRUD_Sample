@@ -125,88 +125,232 @@ namespace Demo_NTier_XmlJsonData.PresentationLayer
             } while (!quitApplication);
         }
 
+        /// <summary>
+        /// add a new character
+        /// </summary>
         static void DisplayAddCharacter()
         {
             FlintstoneCharacter character = new FlintstoneCharacter();
+            List<FlintstoneCharacter> characters = _fcBusiness.AllFlintstoneCharacters();
+            bool responding;
+            bool adding = true;
 
             DisplayScreenHeader("Add New Character");
 
-            Console.Write("ID: ");
-            character.Id = int.Parse(Console.ReadLine());
+            do
+            {
+                Console.Write("ID: ");                
+
+                if (int.TryParse(Console.ReadLine(), out int result))
+                {
+                    foreach (var flintstone in characters)
+                    {
+                        if (result == flintstone.Id)
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("ID already in database. Please try again.");
+                            adding = true;
+                            break;
+                        }
+                        else
+                        {
+                            character.Id = result;
+                            adding = false;
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Invalid entry. Please try again.");
+                    adding = true;
+                }
+
+            } while (adding);
+
             Console.Write("First Name: ");
             character.FirstName = Console.ReadLine();
             Console.Write("Last Name: ");
             character.LastName = Console.ReadLine();
-            Console.Write("Age: ");
-            character.Age = int.Parse(Console.ReadLine());
+
+            //get age from user
+            do
+            {
+                Console.Write("Age: ");
+
+                if (int.TryParse(Console.ReadLine(), out int result))
+                {
+                    character.Age = result;
+                    responding = false;
+                }
+                else
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Invalid entry. Please try again.");
+                    responding = true;
+                }
+            } while (responding);
+
+            //get gender from user
+            do
+            {
+                Console.WriteLine("Gender (F for Female, M for Male): ");
+                string response = Console.ReadLine();
+
+                if (response.ToLower() == "f")
+                {
+                    character.Gender = FlintstoneCharacter.GenderType.Female;
+                    responding = false;
+                }
+                else if (response.ToLower() == "m")
+                {
+                    character.Gender = FlintstoneCharacter.GenderType.Male;
+                    responding = false;
+                }
+                else
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Enter a valid value. F for female, M for male...)");
+                    responding = true;
+                }
+
+            } while (responding);
+
+            Console.WriteLine("Anything to add to the grocery list?");
 
             _fcBusiness.AddFlinstoneCharacter(character);
 
+            Console.WriteLine("Character successfully added!");
             DisplayMainMenuPrompt();
         }
 
+        /// <summary>
+        /// update existing character
+        /// </summary>
         static void DisplayUpdateCharacter()
         {
             List<FlintstoneCharacter> characters = _fcBusiness.AllFlintstoneCharacters();
-            List<FlintstoneCharacter> groceryItems = _fcBusiness.AllFlintstoneCharacters();
-            FlintstoneCharacter person = new FlintstoneCharacter();
+            bool updating = true;            
 
             DisplayScreenHeader("Update Existing Character");
 
-            Console.WriteLine("Please enter the ID for the character you want to update");
-            int selection = int.Parse(Console.ReadLine());
-            foreach (var character in characters)
+            do
             {
-                if (character.Id == selection)
-                {
-                    _fcBusiness.DelFlinstoneCharacter(character);
+                Console.WriteLine("Please enter the ID for the character you want to update");
 
-                    character.Id = selection;
-                    Console.Write("First Name: ");
-                    character.FirstName = Console.ReadLine();
-                    Console.Write("Last Name: ");
-                    character.LastName = Console.ReadLine();
-                    Console.Write("Age: ");
-                    character.Age = int.Parse(Console.ReadLine());
-                    Console.WriteLine("Gender. (F for Female, M for Male");
-                    if (Console.ReadLine().ToLower() == "f")
+                if (int.TryParse(Console.ReadLine(), out int result))
+                {                    
+                    foreach (var character in characters)
                     {
-                        character.Gender = FlintstoneCharacter.GenderType.Female;
-                    }
-                    else if (Console.ReadLine().ToLower() == "m")
-                    {
-                        character.Gender = FlintstoneCharacter.GenderType.Male;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Enter a valid value. F for female, M for male...)");
-                    }
-                    Console.WriteLine("Anything to add to the grocery list?");
+                        if (result == character.Id)
+                        {                            
+                            updating = false;
+                            _fcBusiness.DelFlinstoneCharacter(character);
+                            bool responding;
 
-                    _fcBusiness.AddFlinstoneCharacter(character);
+                            Console.Write("First Name: ");
+                            character.FirstName = Console.ReadLine();
+                            Console.Write("Last Name: ");
+                            character.LastName = Console.ReadLine();
+
+                            //get age from user
+                            do
+                            {
+                                Console.Write("Age: ");
+
+                                if (int.TryParse(Console.ReadLine(), out int ageResult))
+                                {
+                                    character.Age = ageResult;
+                                    responding = false;
+                                }
+                                else
+                                {
+                                    Console.WriteLine();
+                                    Console.WriteLine("Invalid entry. Please try again.");
+                                    responding = true;
+                                }
+                            } while (responding);
+
+                            //get gender from user
+                            do
+                            {
+                                Console.WriteLine("Gender (F for Female, M for Male): ");
+                                string response = Console.ReadLine();
+
+                                if (response.ToLower() == "f")
+                                {
+                                    character.Gender = FlintstoneCharacter.GenderType.Female;
+                                    responding = false;
+                                }
+                                else if (response.ToLower() == "m")
+                                {
+                                    character.Gender = FlintstoneCharacter.GenderType.Male;
+                                    responding = false;
+                                }
+                                else
+                                {
+                                    Console.WriteLine();
+                                    Console.WriteLine("Enter a valid value. F for female, M for male...)");
+                                    responding = true;
+                                }
+
+                            } while (responding);                            
+                            _fcBusiness.AddFlinstoneCharacter(character);
+                            break;
+                        }
+                        else
+                        {
+                            updating = true;
+                        }
+                    }
                 }
-            }
+                else
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Invalid entry. Please try again.");
+                    updating = true;
+                }
 
+            } while (updating);
+
+            Console.WriteLine("Character successfully updated!");
             DisplayMainMenuPrompt();
         }
 
+        /// <summary>
+        /// delete existing character
+        /// </summary>
         static void DisplayDeleteCharacter()
         {
             List<FlintstoneCharacter> characters = _fcBusiness.AllFlintstoneCharacters();
+            bool deleting = true;
 
             DisplayScreenHeader("Delete Character");
 
-            Console.WriteLine("Please enter the ID for the character you would like to delete.");
-            int selection = int.Parse(Console.ReadLine());
-
-            foreach (var character in characters)
+            do
             {
-                if (character.Id == selection)
-                {
-                    _fcBusiness.DelFlinstoneCharacter(character);
-                }
-            }
+                Console.WriteLine("Please enter the ID for the character you would like to delete.");
 
+                if (int.TryParse(Console.ReadLine(), out int result))
+                {
+                    foreach (var character in characters)
+                    {
+                        if (character.Id == result)
+                        {
+                            _fcBusiness.DelFlinstoneCharacter(character);
+                            deleting = false;
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Invalid entry. Please try again.");
+                    deleting = true;
+                }
+            } while (deleting);
+
+            Console.WriteLine("Character successfully deleted!");
             DisplayMainMenuPrompt();
         }
 
@@ -299,7 +443,6 @@ namespace Demo_NTier_XmlJsonData.PresentationLayer
             Console.WriteLine($"Average Annual Gross: {character.AverageAnnualGross:c}");
             Console.WriteLine($"Description: \n{character.Description}");
         }
-
 
         /// <summary>
         /// display a table of all characters: first name, last name, and id
